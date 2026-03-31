@@ -3,7 +3,7 @@
  *************************************************/
 const TARGET_SHEET = "data"
 const CHANNEL_ACCESS_TOKEN = "FBUTNDV82qQr5CCc1x09QKVh3RDgaxkK6t2WmIHiX5GHkjKSX4AKCqruYJH7NNWndroeAPIQVxJ9XPX0W8u17iQWlg9VEG1Rax8M9Ohgg4yeYAchPJWzexFA+kHUKZBejLbm6Mg7KsEeC2VUOP6ZMAdB04t89/1O/w1cDnyilFU="
-const GROUP_ID = "ここにグループID"
+const GROUP_ID = "U26f4f2c8e4d75e8cdd1452b3f8a82951"
 
 /*************************************************
  * ■メイン（自動通知用）
