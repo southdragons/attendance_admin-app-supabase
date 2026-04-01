@@ -202,7 +202,8 @@ watch(currentDate, fetchData)
         <!-- 10時参加 -->
         <div v-if="lateList.length" class="mt-3">
           <div class="font-bold text-blue-500 mb-1">
-            🕙 10時参加（{{ lateList.length }}人）
+            🕙 10時以降参加（{{ lateList.length }}人）<br>
+            <span class="text-xs font-normal">　└対象：小3以下</span>
           </div>
 
           <div v-for="(item, i) in lateList" :key="'l'+i" class="border-b py-1">
