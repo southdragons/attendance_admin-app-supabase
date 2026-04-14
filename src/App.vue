@@ -109,38 +109,38 @@ watch(currentDate, fetchData)
 </script>
 
 <template>
-  <div class="p-4 max-w-4xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">管理者カレンダー</h1>
+  <div class="p-2 max-w-4xl mx-auto">
+    <h1 class="text-xl font-bold mb-3">管理者カレンダー</h1>
 
-    <div class="flex justify-between items-center mb-4">
+    <div class="flex justify-between items-center mb-3">
       <button class="btn btn-sm" @click="prevMonth">←</button>
-      <div class="font-bold text-lg">{{ yearMonth }}</div>
+      <div class="font-bold text-base">{{ yearMonth }}</div>
       <button class="btn btn-sm" @click="nextMonth">→</button>
     </div>
 
-    <div class="grid grid-cols-7 text-center font-bold mb-2">
+    <div class="grid grid-cols-7 text-center font-bold mb-1 text-xs">
       <div v-for="d in ['日','月','火','水','木','金','土']" :key="d">{{ d }}</div>
     </div>
 
-    <div class="grid grid-cols-7 gap-2">
+    <div class="grid grid-cols-7 gap-1">
       <div
         v-for="(day, i) in days"
         :key="i"
         @click="selectDay(day)"
-        class="h-24 p-2 rounded-lg border cursor-pointer transition"
+        class="aspect-square p-1 rounded-lg border cursor-pointer transition flex flex-col items-center justify-start"
         :class="[
           day && format(day) === today ? 'bg-yellow-200 border-yellow-500' : '',
-          !day ? 'bg-gray-50' : 'hover:bg-gray-100'
+          !day ? 'bg-gray-50 border-transparent' : 'hover:bg-gray-100'
         ]"
       >
-        <div v-if="day">
-          <div class="font-bold text-sm">{{ day.getDate() }}</div>
-          <div v-if="data[format(day)]" class="text-xs mt-1 space-y-1">
-            <div v-if="data[format(day)].absent" class="text-red-500 font-bold">
-              ❌ {{ data[format(day)].absent }}人
+        <div v-if="day" class="w-full">
+          <div class="font-bold text-xs text-center">{{ day.getDate() }}</div>
+          <div v-if="data[format(day)]" class="flex flex-col items-center mt-0.5 gap-0.5">
+            <div v-if="data[format(day)].absent" class="text-red-500 font-bold text-xs leading-tight">
+              ✕{{ data[format(day)].absent }}
             </div>
-            <div v-if="data[format(day)].late" class="text-blue-500">
-              🕙 {{ data[format(day)].late }}人
+            <div v-if="data[format(day)].late" class="text-blue-500 text-xs leading-tight">
+              🕙{{ data[format(day)].late }}
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ watch(currentDate, fetchData)
       <div class="bg-white p-5 rounded-xl w-80 max-h-[70vh] overflow-y-auto">
         <h2 class="font-bold text-lg mb-3">{{ selectedDate }}</h2>
         <div v-if="absentList.length">
-          <div class="font-bold text-red-500 mb-1">❌ 欠席（{{ absentList.length }}人）</div>
+          <div class="font-bold text-red-500 mb-1">✕ 欠席（{{ absentList.length }}人）</div>
           <div v-for="(item, i) in absentList" :key="'a'+i" class="border-b py-1">{{ item.name }}</div>
         </div>
         <div v-if="lateList.length" class="mt-3">
