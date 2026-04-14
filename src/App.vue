@@ -127,7 +127,7 @@ watch(currentDate, fetchData)
         v-for="(day, i) in days"
         :key="i"
         @click="selectDay(day)"
-        class="aspect-square p-1 rounded-lg border cursor-pointer transition flex flex-col items-center justify-start"
+        class="h-16 p-1 rounded-lg border cursor-pointer transition flex flex-col items-center justify-start overflow-hidden"
         :class="[
           day && format(day) === today ? 'bg-yellow-200 border-yellow-500' : '',
           !day ? 'bg-gray-50 border-transparent' : 'hover:bg-gray-100'
